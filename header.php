@@ -48,7 +48,14 @@
 					 		
 					 		<ol class="sub-nav">
 		               	
-				               	<?php foreach($block['innerBlocks'] as $sub_slide) { ?>
+				               	<?php
+					               	 $isFirst = true;
+					               	 foreach($block['innerBlocks'] as $sub_slide) {
+						               	 if ($isFirst) {
+									        $isFirst = false;
+									        continue;
+									    } 
+						               	  ?>
 				               	
 				               		<?php if(isset($sub_slide['attrs']['data']['slide_name'])) { 
 					               		$sub_slide_title = $sub_slide['attrs']['data']['slide_name'];
