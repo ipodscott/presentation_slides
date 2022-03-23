@@ -483,3 +483,5 @@ no-js
 .no-js .sub-nav {
   display: none;
 }
+
+.cd-nav-items .sub-nav li:last-child{display: none;}

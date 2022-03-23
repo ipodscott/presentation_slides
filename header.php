@@ -44,7 +44,7 @@
 		               	<?php if( $use_sub_slides) : // open sub slides?> 
 		             	
 		             	<li>
-		             		<a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a>
+		             		<a href="#<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a>
 					 		
 					 		<ol class="sub-nav">
 		               	
@@ -55,7 +55,7 @@
 					              
 				               		?>
 				               		
-				               		<li><a href="<?php echo $slide_slug; ?>"><?php echo $sub_slide_title; ?></a></li>
+				               		<li><a href="#<?php echo $slide_slug; ?>"><?php echo $sub_slide_title; ?></a></li>
 					               		
 								   	<?php } ?>
 							   	<?php }//end foreach ?>
