@@ -23,43 +23,7 @@
 			
 			<div class="cd-nav-items">
 			
-			<ol>
-			
-			<?php 
-	$blocks = parse_blocks($post->post_content);
-foreach ($blocks as $block) {
-print "<pre>".print_r($block,1)."</pre>";
-}
-?>
-		
-			
-					<?php 
-			    $blocks = parse_blocks($post->post_content);
-			    foreach ($blocks as $block) {
-			    if ($block['blockName'] == 'acf/presentation-slide') 
-				    {
-					    $slide_name = $block['attrs']['data']['slide_name'];
-						$slide_slug = '' . sanitize_title( $slide_name ) . '';
-						$use_sub_slides = $block['attrs']['data']['use_sub_slides'];
-						$sub_slides_title = $blocks['innerBlocks'][$blocks]['attrs']['data']['slide_name'];
-						?>		 	
-		               <li>
-		               	<a href="#<?php echo $slide_slug?>"><?php echo $slide_name?></a>
-			               <?php if( $use_sub_slides ): ?> 
-				               <ol>
-				               
-							   <?php echo $sub_slides_title;?>
-	
-				               
-				               <li><?php echo $sub_slides_title; ?></li>
-				               </ol>
-			               <?php endif; ?>
-		               </li>
-						 
-						 <?php } 
-						}
-				?>
-				
+			<ol>				
 				
 				<?php 
 			    $blocks = parse_blocks($post->post_content);
@@ -67,21 +31,38 @@ print "<pre>".print_r($block,1)."</pre>";
 			    if ($block['blockName'] == 'acf/presentation-slide') 
 				    {
 					    $slide_name = $block['attrs']['data']['slide_name'];
+					    $use_sub_slides = $block['attrs']['data']['use_sub_slides'];
 						$slide_slug = '' . sanitize_title( $slide_name ) . '';
+						//$slide_name = ['innerBlocks']['data']
 						?>		 	
-		               <li>
-		               	<a href="#<?php echo $slide_slug?>"><?php echo $slide_name?></a>
-			               <?php if( $use_sub_slides ): ?> 
-				               <ol>
-				               
-							   <?php echo $sub_slides_title;?>
-	
-				               
-				               <li><?php echo $sub_slides_title; ?></li>
-				               </ol>
-			               <?php endif; ?>
-		               </li>
-						 
+		               
+		               	<?php if( !$use_sub_slides) : ?> 
+		               		<li><a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a></li>
+		               	<?php endif ?>
+		               
+		               
+		               	<?php if( $use_sub_slides) : // open sub slides?> 
+		             	
+		             	<li>
+		             		<a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a>
+					 		
+					 		<ol class="sub-nav">
+		               	
+				               	<?php foreach($block['innerBlocks'] as $sub_slide) { ?>
+				               	
+				               		<?php if(isset($sub_slide['attrs']['data']['slide_name'])) { 
+					               		$sub_slide_title = $sub_slide['attrs']['data']['slide_name'];
+					              
+				               		?>
+				               		
+				               		<li><a href="<?php echo $slide_slug; ?>"><?php echo $sub_slide_title; ?></a></li>
+					               		
+								   	<?php } ?>
+							   	<?php }//end foreach ?>
+					   	
+						   	</ol>
+					   	<?php endif // close sub slides ?>
+					   	
 						 <?php } 
 						}
 				?>
