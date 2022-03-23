@@ -36,7 +36,7 @@
 						//$slide_name = ['innerBlocks']['data']
 						?>		 	
 		               
-		               	<?php if( !$use_sub_slides ) : ?> 
+		               	<?php if( !$use_sub_slides) : ?> 
 		               		<li><a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a></li>
 		               	<?php endif ?>
 		               
