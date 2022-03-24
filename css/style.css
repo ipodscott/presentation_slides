@@ -13,7 +13,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
   color: #ffffff;
   background-color: #303030;
   -webkit-font-smoothing: antialiased;
@@ -24,6 +24,11 @@ body {
 a {
   color: #d25555;
   text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-weight: 4000;
+	font-family: 'Oswald',sans-serif;
 }
 
 /* -------------------------------- 
@@ -170,10 +175,7 @@ Slide Content
   vertical-align: middle;
   text-align: center;
 }
-.cd-slider-content h2 {
-  font-size: 3rem;
-  color: #ffffff;
-}
+
 .cd-slider-content p {
   color: #fff;
   margin: 1em 0 2em;
@@ -237,8 +239,9 @@ Slide Content
     visibility: hidden;
   }
   .cd-slider-content h2 {
-    font-size: 4rem;
-    font-weight: 300;
+	font-size: calc(24px + (48 - 24) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 400;
+    text-transform: uppercase;
   }
   .cd-slider-content p {
     font-weight: bold;
@@ -482,4 +485,72 @@ no-js
 
 .no-js .sub-nav {
   display: none;
+}
+
+
+.cd-nav-items a{
+	font-family: 'Oswald', sans-serif;
+	text-transform: uppercase;
+}
+
+.cd-nav-items ol .single-slide-menu{
+	display: flex;
+	align-items: center;
+	}
+	
+	
+	
+.single-slide-menu a{
+	background-color: #000;
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 15px 0 20px 20px;
+}
+
+.single-slide-menu a:hover{
+	background-color: #090909;
+}
+
+.cd-nav-items ol li .sub-slide-parent-link{
+	background-color: #000;
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 15px 0 20px 20px;
+	margin-bottom: 0;
+}
+
+.cd-nav-items ol li.sub-slide-parent-link:hover{
+	background-color: #090909;
+}
+
+
+.cd-slideshow-nav ol ol{
+	margin: 0 0 10px 0;
+	margin-top: 0;
+	padding: 0 0 10px 0;
+	display: block;
+	position: relative;
+}
+
+.sub-link{
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #414141;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+.sub-link a{
+	display: block;
+	position: relative;
+	width: 100%;
+	padding: 10px 0 15px 0;
+	text-indent: 20px;
+	margin-bottom: 0;
+}
+
+.sub-link a:hover{
+	background-color: #090909;
 }

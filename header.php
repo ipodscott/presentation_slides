@@ -9,11 +9,13 @@
 	<link rel="stylesheet" href=<?php bloginfo('template_directory'); ?>/css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/style.css"> <!-- Resource style -->
 	<script src="<?php bloginfo('template_directory'); ?>/js/modernizr.js"></script> <!-- Modernizr -->
-  	
-	<title>Presentation Slideshow | CodyHouse</title>
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+	<title><?php the_title();?></title>
 	<?php wp_head(); ?>
 </head>
-<body>
+<body style="background-image:url(<?php the_field( 'background_image' );?>);">
 	<div class="cd-slideshow-wrapper">
 		<nav class="cd-slideshow-nav">
 			<button class="cd-nav-trigger">
@@ -37,14 +39,14 @@
 						?>		 	
 		               
 		               	<?php if( !$use_sub_slides) : ?> 
-		               		<li><a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a></li>
+		               		<li class="single-slide-menu"><a href="<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a></li>
 		               	<?php endif ?>
 		               
 		               
 		               	<?php if( $use_sub_slides) : // open sub slides?> 
 		             	
 		             	<li>
-		             		<a href="#<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a>
+		             		<a class="sub-slide-parent-link" href="#<?php echo $slide_slug; ?>"><?php echo $slide_name; ?></a>
 					 		
 					 		<ol class="sub-nav">
 		               	
@@ -62,7 +64,7 @@
 					              
 				               		?>
 				               		
-				               		<li><a href="#<?php echo $slide_slug; ?>"><?php echo $sub_slide_title; ?></a></li>
+				               		<li class="sub-link"><a href="#<?php echo $slide_slug; ?>"><?php echo $sub_slide_title; ?></a></li>
 					               		
 								   	<?php } ?>
 							   	<?php }//end foreach ?>
